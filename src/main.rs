@@ -1,6 +1,8 @@
 use std::io;
 
 fn main() {
+    let mut todos: Vec<String> = vec![];
+
     loop {
         print_all_options();
         
