@@ -15,9 +15,7 @@ fn main() {
         };
 
         match selected_option {
-            1 => {
-
-            }
+            1 => create_todo(&mut todos),
             2 => {
                 
             }
@@ -35,7 +33,7 @@ fn main() {
                 break;
             }
             _ => {} // This shouldn't run
-        }
+        };
     }
 }
 
@@ -62,4 +60,14 @@ fn get_option() -> Result<u8, String> {
             Err(String::from("\nInvalid option. Please try again.\n"))
         }
     }
+}
+
+fn create_todo(todos: &mut Vec<String>) {
+    let mut input = String::new();
+
+    println!("What is your new todo?");
+
+    io::stdin().read_line(&mut input).expect("Failed to read line.");
+
+    todos.push(input);
 }
