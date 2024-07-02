@@ -18,9 +18,7 @@ fn main() {
         match selected_option {
             1 => create_todo(&mut todos), // create
             2 => read_todo(&mut todos), // read
-            3 => {
-
-            }
+            3 => update_todo(&mut todos), // update
             4 => {
 
             }
@@ -98,4 +96,44 @@ fn read_todo(todos: &mut Vec<String>) {
             return;
         }
     };
+}
+
+fn update_todo(todos: &mut Vec<String>) {
+    if todos.len() == 0 {
+        println!("\nYou have no todos. Please make one.\n");
+        return;
+    }
+
+    println!("Enter the number of the todo you wish to edit.");
+    
+    let mut todo_input = String::new();
+
+    io::stdin().read_line(&mut todo_input).expect("Failed to read line.");
+
+    let index = match todo_input.trim().parse::<usize>() {
+        Ok(number) => {
+            if (number - 1) > todos.len() {
+                println!("\nThis todo does not exist.\n");
+                return;
+            }
+
+            number - 1
+        },
+        Err(_) => {
+            println!("\nAn error occured searching for your todo. Please try again\n");
+            return;
+        }
+    };
+
+    let mut new_todo_input = String::new();
+
+    println!("Enter your updated todo:");
+
+    io::stdin().read_line(&mut new_todo_input).expect("Failed to read line.");
+
+    println!("Updating todo number {}", index + 1);
+    println!("Previous: {}", todos[index]);
+    println!("New: {}", new_todo_input);
+
+    todos[index] = new_todo_input;
 }
