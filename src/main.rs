@@ -1,3 +1,4 @@
+use core::num;
 use std::io;
 
 fn main() {
@@ -15,10 +16,8 @@ fn main() {
         };
 
         match selected_option {
-            1 => create_todo(&mut todos),
-            2 => {
-                
-            }
+            1 => create_todo(&mut todos), // create
+            2 => read_todo(&mut todos), // read
             3 => {
 
             }
@@ -70,4 +69,33 @@ fn create_todo(todos: &mut Vec<String>) {
     io::stdin().read_line(&mut input).expect("Failed to read line.");
 
     todos.push(input);
+}
+
+fn read_todo(todos: &mut Vec<String>) {
+    if todos.len() == 0 {
+        println!("\nYou have no todos. Please make one.\n");
+        return;
+    }
+
+    let mut input = String::new();
+
+    println!("\nEnter the number of your todo that you wish to read.");
+
+    io::stdin().read_line(&mut input).expect("Failed to read line.");
+
+    match input.trim().parse::<usize>() {
+        Ok(number) => {
+            if (number - 1) > todos.len() {
+                println!("\nThis todo does not exist.\n");
+                return;
+            }
+
+            println!("\nHere is todo number {}:", number - 1);
+            println!("{}", todos[number - 1]);
+        },
+        Err(_) => {
+            println!("\nAn error occured searching for your todo. Please try again\n");
+            return;
+        }
+    };
 }
