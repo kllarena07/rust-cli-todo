@@ -1,8 +1,7 @@
-use core::num;
 use std::io;
 
 fn main() {
-    let mut todos: Vec<String> = vec![];
+    let mut todos: Vec<String> = Vec::new();
 
     loop {
         print_all_options();
