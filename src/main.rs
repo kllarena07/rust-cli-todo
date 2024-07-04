@@ -85,7 +85,7 @@ fn read_todo(todos: &mut Vec<String>) {
                 return;
             }
 
-            println!("\nHere is todo number {}:", number - 1);
+            println!("\nHere is todo number {}:", number);
             println!("{}", todos[number - 1]);
         },
         Err(_) => {
