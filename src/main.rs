@@ -19,9 +19,7 @@ fn main() {
             2 => read_todo(&mut todos), // read
             3 => update_todo(&mut todos), // update
             4 => delete_todo(&mut todos),
-            5 => {
-
-            }
+            5 => print_all_todos(&mut todos),
             6 => {
                 println!("Goodbye 👋");
                 break;
@@ -165,4 +163,15 @@ fn delete_todo(todos: &mut Vec<String>) {
     todos.remove(index);
 
     println!("Successfully deleted todo {}", index + 1);
+}
+
+fn print_all_todos(todos: &mut Vec<String>) {
+    if todos.len() == 0 {
+        println!("\nYou have no todos. Please make one.\n");
+        return;
+    }
+
+    for i in 0..todos.len() {
+        println!("{}: {}", i + 1, todos[i]);
+    }
 }
