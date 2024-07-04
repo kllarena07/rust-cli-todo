@@ -18,9 +18,7 @@ fn main() {
             1 => create_todo(&mut todos), // create
             2 => read_todo(&mut todos), // read
             3 => update_todo(&mut todos), // update
-            4 => {
-
-            }
+            4 => delete_todo(&mut todos),
             5 => {
 
             }
@@ -135,4 +133,36 @@ fn update_todo(todos: &mut Vec<String>) {
     println!("New: {}", new_todo_input);
 
     todos[index] = new_todo_input;
+}
+
+fn delete_todo(todos: &mut Vec<String>) {
+    if todos.len() == 0 {
+        println!("\nYou have no todos. Please make one.\n");
+        return;
+    }
+
+    println!("Enter the number of the todo you want to delete.");
+
+    let mut todo_input = String::new();
+
+    io::stdin().read_line(&mut todo_input).expect("Failed to read line.");
+
+    let index = match todo_input.trim().parse::<usize>() {
+        Ok(number) => {
+            if (number - 1) > todos.len() {
+                println!("\nThis todo does not exist.\n");
+                return;
+            }
+
+            number - 1
+        },
+        Err(_) => {
+            println!("\nAn error occured searching for your todo. Please try again\n");
+            return;
+        }
+    };
+
+    todos.remove(index);
+
+    println!("Successfully deleted todo {}", index + 1);
 }
