@@ -101,7 +101,7 @@ fn update_todo(todos: &mut Vec<String>) {
         return;
     }
 
-    println!("Enter the number of the todo you wish to edit.");
+    println!("\nEnter the number of the todo you wish to edit.");
     
     let mut todo_input = String::new();
 
@@ -124,12 +124,12 @@ fn update_todo(todos: &mut Vec<String>) {
 
     let mut new_todo_input = String::new();
 
-    println!("Enter your updated todo:");
+    println!("\nEnter your a new value:");
 
     io::stdin().read_line(&mut new_todo_input).expect("Failed to read line.");
 
-    println!("Updating todo number {}", index + 1);
-    println!("Previous: {}", todos[index]);
+    println!("\nUpdating todo number {}", index + 1);
+    print!("Previous: {}", todos[index]);
     println!("New: {}", new_todo_input);
 
     todos[index] = new_todo_input;
