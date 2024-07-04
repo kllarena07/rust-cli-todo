@@ -57,9 +57,11 @@ fn get_option() -> Result<u8, String> {
 fn create_todo(todos: &mut Vec<String>) {
     let mut input = String::new();
 
-    println!("What is your new todo?");
+    println!("\nWhat is your new todo?");
 
     io::stdin().read_line(&mut input).expect("Failed to read line.");
+
+    println!("\nSuccessfully created new todo: {}", input);
 
     todos.push(input);
 }
