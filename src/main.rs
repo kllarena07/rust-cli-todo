@@ -141,7 +141,7 @@ fn delete_todo(todos: &mut Vec<String>) {
         return;
     }
 
-    println!("Enter the number of the todo you want to delete.");
+    println!("\nEnter the number of the todo you want to delete.");
 
     let mut todo_input = String::new();
 
@@ -164,7 +164,7 @@ fn delete_todo(todos: &mut Vec<String>) {
 
     todos.remove(index);
 
-    println!("Successfully deleted todo {}", index + 1);
+    println!("\nSuccessfully deleted todo {}\n", index + 1);
 }
 
 fn print_all_todos(todos: &mut Vec<String>) {
