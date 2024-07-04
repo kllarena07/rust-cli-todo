@@ -15,9 +15,9 @@ fn main() {
         };
 
         match selected_option {
-            1 => create_todo(&mut todos), // create
-            2 => read_todo(&mut todos), // read
-            3 => update_todo(&mut todos), // update
+            1 => create_todo(&mut todos),
+            2 => read_todo(&mut todos),
+            3 => update_todo(&mut todos),
             4 => delete_todo(&mut todos),
             5 => print_all_todos(&mut todos),
             6 => {
