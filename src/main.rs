@@ -171,7 +171,9 @@ fn print_all_todos(todos: &mut Vec<String>) {
         return;
     }
 
+    println!("\nHere are all your todos:");
     for i in 0..todos.len() {
-        println!("{}: {}", i + 1, todos[i]);
+        print!("{}. {}", i + 1, todos[i]);
     }
+    println!("");
 }
